@@ -16,9 +16,9 @@ class CinemaLocationSeeder extends Seeder
     public function run()
     {
         $locations = [
-            ["name" => "Banana Island"],
-            ["name" => "Lekki Phase II"],
-            ["name" => "Ikeja City Mall"]
+            ["location" => "Banana Island"],
+            ["location" => "Lekki Phase II"],
+            ["location" => "Ikeja City Mall"]
         ];
 
         DB::table('cinema_locations')->insert($locations);
