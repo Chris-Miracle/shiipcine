@@ -86,7 +86,7 @@
                         @foreach ($movies as $movie)
                             <div class="col-md-3 mb-3 d-flex justify-content-center">
                                 <div class="card" style="width: 18rem;">
-                                    <img class="card-img-top" height="200px" src="{{asset((isset($movie) && $movie->movie_cover != '') ? '/images/movies/'.$movie->movie_cover : 'img/placeholder/ulf.jpg')}}" alt="Movie Cover">
+                                    <img class="card-img-top" height="200px" src="{{isset($movie) && $movie->movie_cover != '' ? '/images/movies/'.$movie->movie_cover : 'img/placeholder/ulf.jpg'}}" alt="Movie Cover">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ucfirst($movie->movie_title)}}</h5>
                                         <p class="card-text">Date & Time: {{date('F j, Y', strtotime($movie->show_date))}} By {{date('g:i a', strtotime($movie->show_time))}}</p>
