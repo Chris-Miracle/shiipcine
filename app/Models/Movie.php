@@ -16,7 +16,7 @@ class Movie extends Model
         'movie_cover',
     ];
 
-    public function cinema_locatiom(){
+    public function cinema_location(){
         return $this->belongsTo('App\Models\CinemaLocation');
     }
 }
