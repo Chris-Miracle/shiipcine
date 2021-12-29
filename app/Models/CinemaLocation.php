@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class CinemaLocation extends Model
 {
     use HasFactory;
+
+    public function movies(){
+        return $this->hasMany('App\Models\Movie');
+    }
 }
