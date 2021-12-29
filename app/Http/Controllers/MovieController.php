@@ -19,24 +19,14 @@ class MovieController extends Controller
     public function index()
     {
         $movies = $this->movieRepository->getAllMovies();
+        $locations = CinemaLocation::all();
         return view('welcome', compact('locations', 'movies'));
     }
 
-    public function getIkejaMovies(){
+    public function sortByCinema(Request $request){
         $cinemaId = $request->route('id');
-        $movies = $this->movieRepository->getIkejaMovies($cinemaId);
-        return view('welcome', compact('movies'));
-    }
-
-    public function getBananaIslandMovies(){
-        $cinemaId = $request->route('id');
-        $movies = $this->movieRepository->getBananaIslandMovies($cinemaId);
-        return view('welcome', compact('movies'));
-    }
-
-    public function getLekkiMovies(){
-        $cinemaId = $request->route('id');
-        $movies = $this->movieRepository->getLekkiMovies($cinemaId);
-        return view('welcome', compact('movies'));
+        $locations = CinemaLocation::all();
+        $movies = $this->movieRepository->sortByCinema($cinemaId);
+        return view('welcome', compact('locations', 'movies'));
     }
 }

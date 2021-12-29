@@ -70,9 +70,9 @@
                             Sort By Cinema Location
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="">Lekki Phase II</a>
-                            <a class="dropdown-item" href="">Banana Island</a>
-                            <a class="dropdown-item" href="">Ikeja City Mall</a>
+                            @foreach ($locations as $cinema)
+                                <a class="dropdown-item" href="{{route('sort-by-location', $cinema->id)}}">{{ $cinema->location }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -83,17 +83,19 @@
                         <h2>Available Box office movies</h2>
                     </div>
                     <div class="row">
-                        <div class="col-md-3 mb-3 d-flex justify-content-center">
-                            <div class="card" style="width: 18rem;">
-                                <img class="card-img-top" src="{{asset('img/placeholder/ulf.jpg')}}" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">Far From Home Spiderman</h5>
-                                    <p class="card-text">Date & Time: 27th September 2021. 2:45pm.</p>
-                                    <p class="card-text">Showing at: Lekki Phase II Cinema.</p>
-                                    <a href="#" class="btn btn-link">Book Ticket</a>
+                        @foreach ($movies as $movie)
+                            <div class="col-md-3 mb-3 d-flex justify-content-center">
+                                <div class="card" style="width: 18rem;">
+                                    <img class="card-img-top" height="200px" src="{{asset((isset($movie) && $movie->movie_cover != '')? '/images/movies/'.$movie->movie_cover : 'img/placeholder/ulf.jpg')}}" alt="Movie Cover">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ucfirst($movie->movie_title)}}</h5>
+                                        <p class="card-text">Date & Time: {{date('F j, Y', strtotime($movie->show_date))}} By {{date('g:i a', strtotime($movie->show_time))}}</p>
+                                        <p class="card-text">Showing at: {{ucfirst($movie->cinema_location->location)}}</p>
+                                        <a href="#" class="btn btn-link">Book Ticket now</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                 </section>
             </div>

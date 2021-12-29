@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\MovieController::class, 'index'])->name('welcome');
+Route::get('/sort-by-cinema/{id}', [App\Http\Controllers\MovieController::class, 'sortByCinema'])->name('sort-by-location');
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

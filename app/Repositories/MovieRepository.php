@@ -13,27 +13,10 @@ class MovieRepository implements MovieRepositoryInterface
         return Movie::all();
     }
 
-    public function getIkejaMovies($cinemaId) 
+    public function sortByCinema($cinemaId) 
     {
         $cinemaLocation = CinemaLocation::findOrfail($cinemaId);
         return $cinemaLocation->movies;
-    }
-
-    public function getBananaIslandMovies($cinemaId) 
-    {
-        $cinemaLocation = CinemaLocation::findOrfail($cinemaId);
-        return $cinemaLocation->movies;
-    }
-
-    public function getLekkiMovies($cinemaId) 
-    {
-        $cinemaLocation = CinemaLocation::findOrfail($cinemaId);
-        return $cinemaLocation->movies;
-    }
-
-    public function getMovieById($movieId) 
-    {
-        return Movie::findOrFail($movieId);
     }
 
     public function deleteMovie($movieId) 
@@ -44,10 +27,5 @@ class MovieRepository implements MovieRepositoryInterface
     public function createMovie(array $movieDetails) 
     {
         return Movie::create($movieDetails);
-    }
-
-    public function updateMovie($movieId, array $newDetails) 
-    {
-        return Movie::whereId($movieId)->update($newDetails);
     }
 }
