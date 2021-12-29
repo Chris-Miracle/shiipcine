@@ -13,7 +13,7 @@ class Movie extends Model
         'movie_time',
         'show_date',
         'show_time',
-        'image1',
+        'movie_cover',
     ];
 
     public function cinema_locatiom(){
