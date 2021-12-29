@@ -35,7 +35,7 @@
                             </div>
 
                             <div class="form-group col-md-6 mb-1">
-                                <label for="showTime">Time</label>
+                                <label for="showTime">Show Time</label>
                                 <input type="time" class="form-control @error('show_time') is-invalid @enderror" name="show_time" value="{{old('show_time')}}">
                                 {{-- <div class="text-danger">{{$errors->first('show_time')}}</div> --}}
                             </div>
