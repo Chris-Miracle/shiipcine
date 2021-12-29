@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\CinemaLocation;
 use App\Models\Movie;
 use App\Interfaces\MovieRepositoryInterface;
+use Image;
+use File;
 
 class HomeController extends Controller
 {
@@ -37,6 +39,7 @@ class HomeController extends Controller
     public function store(Request $request) 
     {
         $request->validate([
+            'cinema_location' => "required",
             'movie_title' => "required|min:3",
             'show_date' => 'required|date|after_or_equal:today',
             'show_time' => "required",
@@ -50,11 +53,14 @@ class HomeController extends Controller
         }
 
         $movieDetails = array(
+            'cinema_location_id' => $request->cinema_location,
             'movie_title' => $request->movie_title,
             'show_date' => $request->show_date,
             'show_time' => $request->show_time,
             'movie_cover' => $Imagefile 
         );
+
+        // dd($movieDetails);
 
         $this->movieRepository->createMovie($movieDetails);
         return redirect('/home');

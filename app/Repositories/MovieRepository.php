@@ -19,13 +19,13 @@ class MovieRepository implements MovieRepositoryInterface
         return $cinemaLocation->movies;
     }
 
-    public function getBananaIslandMovies() 
+    public function getBananaIslandMovies($cinemaId) 
     {
         $cinemaLocation = CinemaLocation::findOrfail($cinemaId);
         return $cinemaLocation->movies;
     }
 
-    public function getLekkiMovies() 
+    public function getLekkiMovies($cinemaId) 
     {
         $cinemaLocation = CinemaLocation::findOrfail($cinemaId);
         return $cinemaLocation->movies;

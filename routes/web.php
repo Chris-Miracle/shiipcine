@@ -18,5 +18,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/home/add-movie', [App\Http\Controllers\HomeController::class, 'store'])->name('add-movie');
+Route::delete('/home/delete-movie', [App\Http\Controllers\HomeController::class, 'destroy'])->name('delete-movie');
