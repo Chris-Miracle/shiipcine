@@ -72,7 +72,7 @@
                 <tbody>
                     @foreach ($movies as $movie)
                         <tr>
-                            <th scope="row">1</th>
+                            <th scope="row">{{$movie->id}}</th>
                             <td>{{ucfirst($movie->cinema_location->location)}}</td>
                             <td>{{ucfirst($movie->movie_title)}}</td>
                             <td>{{date('F j, Y', strtotime($movie->show_date))}} By {{date('g:i a', strtotime($movie->show_time))}}</td>
